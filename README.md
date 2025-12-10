@@ -21,7 +21,7 @@ Instead of treating Mass and Gravity as fundamental, DST derives them from **Inf
 ---
 
 ## 🧮 The Physics Engine (Calculator)
-Included in this repository is `html.html`, a **Strict DST Physics Engine**. 
+Included in this repository is `index.html`, a **Strict DST Physics Engine**. 
 
 Unlike standard gravity calculators that use Newton's Constant ($G$) and Mass ($kg$), this engine calculates gravity using **Bits of Information**.
 
