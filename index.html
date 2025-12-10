@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensional Spark Theory | Gravity Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+    
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --void-bg: #050505;
+            --panel-bg: #0f111a;
+            --text-main: #e0e6ed;
+        }
+
+        body {
+            background-color: var(--void-bg);
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(188, 19, 254, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 10% 10%, rgba(0, 243, 255, 0.05) 0%, transparent 30%);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(15, 17, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .neon-border {
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 5px var(--neon-blue), inset 0 0 5px var(--neon-blue);
+        }
+
+        .neon-text {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .neon-purple-text {
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        input, select {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--neon-purple);
+        }
+
+        /* Custom Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: var(--neon-blue);
+            margin-top: -6px;
+            box-shadow: 0 0 10px var(--neon-blue);
+            cursor: pointer;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+
+        .spark-animation {
+            position: relative;
+            overflow: hidden;
+        }
+        .spark-animation::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        .formula-display {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-8 text-center border-b border-gray-800 pb-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 tracking-wider">
+                <span class="neon-purple-text">DIMENSIONAL</span> SPARK THEORY
+            </h1>
+            <p class="text-blue-300 text-lg tracking-widest">STRICT DST PHYSICS ENGINE</p>
+            <p class="text-xs text-gray-500 mt-2">Based on the research framework by Ayush Pal</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Left Panel: Controls -->
+            <div class="lg:col-span-4 space-y-6">
+                
+                <!-- Theory Summary -->
+                <div class="glass-panel p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-3 border-b border-gray-700 pb-2 brand-font text-blue-400">
+                        <i class="fas fa-atom mr-2"></i>Strict DST Mode
+                    </h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-4">
+                        <strong>Update Applied:</strong> Gravity is now calculated strictly via Information Attraction. Mass is only a storage medium.
+                        <br><br>
+                        This engine uses the <strong>Spark Gravitational Constant (Gs)</strong> acting on total bits ($I$), not Newtonian Mass ($M$).
+                    </p>
+                    <div class="bg-black/40 p-3 rounded border border-gray-700 text-center">
+                        <span class="text-xs text-gray-500">THE DST FIELD EQUATION</span>
+                        <div class="formula-display text-lg mt-1 text-purple-300">
+                            F<sub>net</sub> = - (Gs·I)/r² + Φ·(ρ<sub>I</sub>/ρ<sub>crit</sub>)ⁿ
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Module -->
+                <div class="glass-panel p-6 rounded-xl relative spark-animation">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                    <h3 class="text-xl font-bold mb-4 brand-font text-white">
+                        <i class="fas fa-sliders-h mr-2"></i>Input Parameters
+                    </h3>
+
+                    <!-- Presets -->
+                    <div class="mb-4">
+                        <label class="block text-xs uppercase tracking-wider text-blue-400 mb-2">Load Celestial/Quantum Preset</label>
+                        <select id="presetSelect" class="w-full p-2 rounded text-sm bg-gray-900 focus:bg-gray-800 border-gray-700 text-blue-200">
+                            <optgroup label="Celestial Objects">
+                                <option value="earth" selected>Planet Earth (Calibrated)</option>
+                                <option value="moon">The Moon</option>
+                                <option value="sun">The Sun</option>
+                                <option value="jupiter">Jupiter</option>
+                                <option value="neutron">Neutron Star (High Density)</option>
+                                <option value="blackhole">Black Hole Event Horizon</option>
+                            </optgroup>
+                            <optgroup label="Quantum Objects (DST Unified)">
+                                <option value="proton">Proton (Nucleon)</option>
+                                <option value="electron">Electron (Classical Radius)</option>
+                                <option value="spark">Dimensional Spark (Fundamental Unit)</option>
+                            </optgroup>
+                            <option value="custom">Custom Object</option>
+                        </select>
+                    </div>
+
+                    <!-- Name Input (New) -->
+                    <div class="mb-4">
+                        <label class="block text-xs uppercase text-gray-400 mb-1">Object Name</label>
+                        <input type="text" id="nameInput" class="w-full p-2 rounded text-sm bg-black/40 border-gray-700 focus:border-blue-500" placeholder="Enter object name...">
+                    </div>
+
+                    <!-- Mass Input -->
+                    <div class="mb-4">
+                        <label class="block text-xs uppercase text-gray-400 mb-1">Mass (kg)</label>
+                        <div class="flex">
+                            <input type="number" id="massInput" class="w-full p-2 rounded-l text-sm" placeholder="e.g. 5.972e24" step="any">
+                            <span class="bg-gray-800 border border-l-0 border-gray-700 text-gray-400 px-3 flex items-center text-xs rounded-r">kg</span>
+                        </div>
+                    </div>
+
+                    <!-- Radius Input -->
+                    <div class="mb-6">
+                        <label class="block text-xs uppercase text-gray-400 mb-1">Radius (meters)</label>
+                        <div class="flex">
+                            <input type="number" id="radiusInput" class="w-full p-2 rounded-l text-sm" placeholder="e.g. 6.371e6" step="any">
+                            <span class="bg-gray-800 border border-l-0 border-gray-700 text-gray-400 px-3 flex items-center text-xs rounded-r">m</span>
+                        </div>
+                    </div>
+
+                    <!-- Calculate Button -->
+                    <button onclick="calculateDST()" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded uppercase tracking-widest transition shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                        Initialize Calculation
+                    </button>
+                </div>
+
+                <!-- Advanced Settings (Collapsible) -->
+                <div class="glass-panel p-4 rounded-xl border-t-4 border-purple-900">
+                    <details>
+                        <summary class="cursor-pointer text-xs uppercase text-purple-400 font-bold hover:text-purple-300">
+                            Advanced / Constants
+                        </summary>
+                        <div class="mt-4 space-y-3">
+                            <div>
+                                <label class="block text-xs text-gray-500">Spark Modulus (Φ) - Structural Integrity</label>
+                                <input type="number" id="phiInput" value="1e22" class="w-full p-1 text-xs rounded bg-black/30 border-gray-800 text-gray-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-gray-500">Power Factor (n)</label>
+                                <input type="number" id="nInput" value="1" class="w-full p-1 text-xs rounded bg-black/30 border-gray-800 text-gray-400">
+                            </div>
+                            <p class="text-[10px] text-gray-600 italic">Recalibrated Φ to 1e22 to handle increased bit-density.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Right Panel: Results & Visualization -->
+            <div class="lg:col-span-8 space-y-6">
+                
+                <!-- Main Display -->
+                <div class="glass-panel p-6 rounded-xl min-h-[400px] flex flex-col justify-between">
+                    
+                    <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
+                        <div>
+                            <h2 class="text-3xl font-bold text-white brand-font" id="objectName">Unknown Object</h2>
+                            <p class="text-sm text-blue-400">DST Analysis Output</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs text-gray-500 uppercase">Net Surface Gravity</div>
+                            <div class="text-4xl font-mono font-bold text-white neon-text" id="netGravityDisplay">0.00 <span class="text-lg">m/s²</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Grid of Stats -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        
+                        <div class="stat-card p-4 rounded">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-gray-400 uppercase">Total Information (I)</span>
+                                <i class="fas fa-database text-purple-500"></i>
+                            </div>
+                            <div class="text-xl font-mono text-purple-200" id="infoContentDisplay">0 Bits</div>
+                            <div class="text-[10px] text-gray-500 mt-1">Mass converted to 1D Sparks</div>
+                        </div>
+
+                        <div class="stat-card p-4 rounded border-l-blue-500">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-gray-400 uppercase">Information Density (ρ<sub>I</sub>)</span>
+                                <i class="fas fa-compress-arrows-alt text-blue-500"></i>
+                            </div>
+                            <div class="text-xl font-mono text-blue-200" id="infoDensityDisplay">0 Bits/m³</div>
+                            <div class="text-[10px] text-gray-500 mt-1">Bits per cubic meter</div>
+                        </div>
+
+                        <div class="stat-card p-4 rounded border-l-green-500">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-gray-400 uppercase">Gravitational Tension (Gs·I)</span>
+                                <i class="fas fa-arrow-down text-green-500"></i>
+                            </div>
+                            <div class="text-lg font-mono text-green-200" id="gravPullDisplay">0.00 m/s²</div>
+                            <div class="text-[10px] text-gray-500 mt-1">Collapse force via Information</div>
+                        </div>
+
+                        <div class="stat-card p-4 rounded border-l-red-500">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs text-gray-400 uppercase">Quantum Repulsion</span>
+                                <i class="fas fa-arrow-up text-red-500"></i>
+                            </div>
+                            <div class="text-lg font-mono text-red-200" id="repulsionDisplay">0.00 m/s²</div>
+                            <div class="text-[10px] text-gray-500 mt-1">DST Resistance Term</div>
+                        </div>
+
+                    </div>
+
+                    <!-- Density Visualization Bar -->
+                    <div class="mt-auto">
+                        <div class="flex justify-between text-xs mb-2 px-1">
+                            <span class="text-gray-400 w-[40%]">Vacuum/Gas</span>
+                            <span class="text-green-400 w-[15%] text-center font-bold">Rocky</span>
+                            <span class="text-yellow-500 w-[35%] text-right font-bold">Neutron / Quantum</span>
+                            <span class="text-red-600 w-[10%] text-right font-bold">Singularity</span>
+                        </div>
+                        <div class="w-full h-4 bg-gray-900 rounded-full overflow-hidden border border-gray-700 relative">
+                            <!-- Vacuum Zone 0-50% -->
+                            <div class="absolute top-0 bottom-0 left-0 bg-blue-900 w-[50%] opacity-20 border-r border-white/10"></div>
+                            
+                            <!-- Rocky Planet Zone 50-65% (Shifted for new bit density) -->
+                            <div class="absolute top-0 bottom-0 left-[50%] bg-green-500 w-[15%] opacity-20 border-r border-white/10"></div>
+
+                            <!-- Danger Zone 65-90% -->
+                            <div class="absolute top-0 bottom-0 left-[65%] bg-yellow-900 w-[25%] opacity-20 border-r border-white/10"></div>
+                            
+                            <!-- Critical Zone 90-100% -->
+                            <div class="absolute top-0 bottom-0 right-0 bg-red-900 w-[10%] opacity-20"></div>
+                            
+                            <!-- Actual Indicator -->
+                            <div id="densityBar" class="h-full bg-gradient-to-r from-blue-500 via-green-400 to-white transition-all duration-1000 ease-out w-0 relative">
+                                <div class="absolute right-0 top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_white]"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-[10px] mt-1 text-gray-600 font-mono">
+                            <span>10⁰</span>
+                            <span class="ml-auto pr-4">10⁴¹ (Earth)</span>
+                            <span class="ml-auto pr-4">10⁵⁵</span>
+                            <span>10⁶⁶ (ρ<sub>crit</sub>)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Console -->
+                <div class="glass-panel p-6 rounded-xl border border-gray-800">
+                    <h4 class="text-sm font-bold text-gray-400 uppercase mb-3">System Analysis Log</h4>
+                    <div id="consoleLog" class="font-mono text-xs h-32 overflow-y-auto text-green-400 space-y-1 p-2 bg-black/50 rounded">
+                        <span class="text-gray-600">Waiting for input stream...</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- STRICT DST PHYSICS CONSTANTS ---
+        // Calibrated Spark Constants for Information-based Gravity
+        const CONST_G_DST = 2.0e-48; // Spark Gravitational Constant (Gs)
+        const M_SPARK = 3.0e-38;     // Mass of 1 Bit (kg) derived from Energy
+        const RHO_CRIT = 1e66;       // Critical Density remains the same
+        
+        // Preset Data
+        const presets = {
+            // Earth calibrated to 6375km effective radius to yield 9.81 m/s^2 observed gravity
+            earth: { mass: 5.972e24, radius: 6.371e6, name: "Planet Earth" },
+            moon: { mass: 7.348e22, radius: 1.737e6, name: "The Moon" },
+            sun: { mass: 1.989e30, radius: 6.963e8, name: "The Sun" },
+            jupiter: { mass: 1.898e27, radius: 6.991e7, name: "Jupiter" },
+            neutron: { mass: 2.8e30, radius: 1.2e4, name: "Neutron Star" }, 
+            blackhole: { mass: 1.989e30, radius: 2.95e3, name: "Solar Mass Black Hole" },
+            
+            // Quantum Presets
+            proton: { mass: 1.67e-27, radius: 8.41e-16, name: "Proton (Nucleon)" },
+            electron: { mass: 9.109e-31, radius: 2.81e-15, name: "Electron (Classical)" },
+            spark: { mass: 1.67e-27, radius: 8.00e-16, name: "Theoretical 1D Spark" }
+        };
+
+        // DOM Elements
+        const massInput = document.getElementById('massInput');
+        const radiusInput = document.getElementById('radiusInput');
+        const nameInput = document.getElementById('nameInput');
+        const presetSelect = document.getElementById('presetSelect');
+        const phiInput = document.getElementById('phiInput');
+        const nInput = document.getElementById('nInput');
+        const logBox = document.getElementById('consoleLog');
+
+        // Event Listeners
+        presetSelect.addEventListener('change', loadPreset);
+
+        function log(msg, type='info') {
+            const line = document.createElement('div');
+            const time = new Date().toLocaleTimeString();
+            
+            if(type === 'alert') line.className = 'text-red-400';
+            else if(type === 'success') line.className = 'text-blue-300';
+            else line.className = 'text-green-400';
+            
+            line.innerHTML = `<span class="opacity-50">[${time}]</span> ${msg}`;
+            logBox.prepend(line);
+        }
+
+        function loadPreset() {
+            const key = presetSelect.value;
+            if (key === 'custom') {
+                nameInput.value = "Custom Object";
+                massInput.value = '';
+                radiusInput.value = '';
+                return;
+            }
+            
+            const data = presets[key];
+            massInput.value = data.mass.toExponential(3);
+            radiusInput.value = data.radius.toExponential(3);
+            nameInput.value = data.name;
+            log(`Loaded preset parameters for: ${data.name}`);
+            calculateDST();
+        }
+
+        function formatScientific(num) {
+            if (num === 0) return "0.00";
+            if (Math.abs(num) < 1000 && Math.abs(num) > 0.001) return num.toFixed(2);
+            let str = num.toExponential(2);
+            let [base, exponent] = str.split('e');
+            return `${base} × 10<sup>${exponent.replace('+','')}</sup>`;
+        }
+
+        function calculateDST() {
+            const M = parseFloat(massInput.value);
+            const r = parseFloat(radiusInput.value);
+            const Phi = parseFloat(phiInput.value);
+            const n = parseFloat(nInput.value);
+            const objName = nameInput.value || "Unknown Object";
+
+            if (isNaN(M) || isNaN(r) || r === 0) {
+                log("Invalid input parameters detected.", "alert");
+                return;
+            }
+
+            document.getElementById('objectName').innerText = objName;
+            log(`Initiating calculation for ${objName}... Mass: ${M.toExponential(2)}kg`);
+
+            // 1. Calculate Volume (Sphere)
+            const V = (4/3) * Math.PI * Math.pow(r, 3);
+
+            // 2. Convert Mass to Information (Bits)
+            // I = M / m_spark
+            const I = M / M_SPARK;
+
+            // 3. Calculate Information Density
+            // rho_I = I / V
+            const rho_I = I / V;
+
+            // 4. Calculate DST Gravity (Using Information, not Mass)
+            // F_grav = (Gs * Total_Bits) / r^2
+            const F_grav = (CONST_G_DST * I) / Math.pow(r, 2);
+
+            // 5. Calculate Quantum Repulsion (The Push)
+            // Term: Phi * (rho_I / rho_crit)^n
+            const densityRatio = rho_I / RHO_CRIT;
+            const repulsionTerm = Phi * Math.pow(densityRatio, n);
+
+            // 6. Net Force
+            const F_net =-F_grav + repulsionTerm;
+
+            // Update UI
+            document.getElementById('infoContentDisplay').innerHTML = formatScientific(I) + " Bits";
+            document.getElementById('infoDensityDisplay').innerHTML = formatScientific(rho_I) + " Bits/m³";
+            document.getElementById('gravPullDisplay').innerHTML = formatScientific(F_grav) + " m/s²";
+            document.getElementById('repulsionDisplay').innerHTML = formatScientific(repulsionTerm) + " m/s²";
+            document.getElementById('netGravityDisplay').innerHTML = formatScientific(F_net) + ' <span class="text-lg">m/s²</span>';
+
+            // Visual Logic for Density Bar
+            // RECALIBRATED: Shifted scale because bit density is now higher (since bits are smaller)
+            const exponent = Math.log10(rho_I);
+            const critExponent = Math.log10(RHO_CRIT); // 66
+            
+            // New Earth density is roughly 10^41 (previously 10^30)
+            // We map 0-66 scale to percentage
+            let percentage = (exponent / critExponent) * 100;
+            if (percentage < 0) percentage = 1;
+            if (percentage > 100) percentage = 100;
+
+            const bar = document.getElementById('densityBar');
+            bar.style.width = `${percentage}%`;
+            
+            // Color shift based on danger - Thresholds SHIFTED UP
+            if (percentage > 90) { // > 10^60
+                bar.className = "h-full w-0 relative bg-red-600 shadow-[0_0_20px_red]";
+                log("WARNING: Object approaching Singularity Limit!", "alert");
+            } else if (percentage > 65) { // > 10^43 (Neutron stars ~10^55)
+                bar.className = "h-full w-0 relative bg-yellow-500 shadow-[0_0_15px_orange]";
+                log("High Information Density detected. Stellar/Quantum mass range.");
+            } else if (percentage > 50) { // ~10^33 to 10^43 (Earth ~10^41)
+                bar.className = "h-full w-0 relative bg-green-500 shadow-[0_0_10px_green]";
+                log("Density within habitable Rocky Planet range.");
+            } else {
+                bar.className = "h-full w-0 relative bg-blue-500";
+            }
+
+            // Logic check for Neutron Star effect or Quantum Effect
+            if (repulsionTerm > 0.01) {
+                if (Math.abs(repulsionTerm) > Math.abs(F_grav)) {
+                     log(`DST Quantum Effect: Repulsion DOMINATES Gravity (Stability Achieved)`, "success");
+                } else {
+                    const percentEffect = (repulsionTerm / F_grav) * 100;
+                    log(`DST Effect: Repulsion counteracting gravity by ${percentEffect.toFixed(4)}%`, "success");
+                }
+            }
+        }
+
+        // Init
+        loadPreset();
+
+    </script>
+</body>
+</html>
